@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"> <ui:composition
+	template="master.xhtml">
+
+	<ui:define name="title">
+        .:Actualizar:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Actualización de Especialidades</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<h:outputLabel for="idSpecialty" value="Id "
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="idSpecialty"
+				styleClass="form-control"
+				value="#{specialtyController.specialty.idSpecialty}" required="true" />
+
+
+			<h:outputLabel for="nameSpeacialty" value="Especialidad"
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="nameSpeacialty"
+				styleClass="form-control"
+				value="#{specialtyController.specialty.nameSpecialty}"
+				maxlength="30" required="true" />
+			<br />
+			<p:outputLabel for="cboMedicCenter" value="Centro Médico" />
+
+
+			<p:selectOneMenu id="cboMedicCenter"
+				value="#{specialtyController.specialty.medicCenter}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{specialtyController.listaCentrosMedicos}"
+					var="m" itemLabel="#{m.nameMedicCenter}" itemValue="#{m}" />
+			</p:selectOneMenu>
+			<br />
+
+
+			<p:commandButton value="Actualizar"
+				actionListener="#{specialtyController.modificar()}"
+				styleClass="btn btn-primary " update="@form"
+				action="listSpecialty?faces-redirect=true" />
+			<p:commandButton value="Cancelar"
+				action="listSpecialty?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition> </html>

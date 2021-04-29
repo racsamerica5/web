@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"> <ui:composition
+	template="master.xhtml">
+
+	<ui:define name="title">
+        .:Registro de Centros Médicos:.
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>Centros Médicos</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<h:outputLabel for="idMedicCenter" value="Id "
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="idMedicCenter"
+				styleClass="form-control"
+				value="#{medicCenterController.medic.idMedicCenter}" required="true" />
+			<h:outputLabel for="nameMedicCenter" value="Nombres "
+				styleClass="control-label" />
+
+			<p:inputText autocomplete="off" id="nameMedicCenter"
+				styleClass="form-control"
+				value="#{medicCenterController.medic.nameMedicCenter}"
+				maxlength="30" required="true" />
+			<br />
+			<h:outputLabel for="adressMedicCenter" value="Dirección "
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="adressMedicCenter"
+				styleClass="form-control"
+				value="#{medicCenterController.medic.adressMedicCenter}"
+				maxlength="30" required="true" />
+			<br />
+			<h:outputLabel for="dateMedicCenter" value="Fecha de Creación "
+				styleClass="control-label" />
+
+			<p:calendar id="dateMedicCenter" pattern="dd/MM/yyyy"
+				value="#{medicCenterController.medic.dateMedicCenter}"
+				showOn="button" timeZone="UTC" required="true">
+			</p:calendar>
+
+
+			<br />
+			<p:commandButton value="Grabar"
+				actionListener="#{medicCenterController.insert()}"
+				styleClass="btn btn-primary " update="@form"
+				action="listMedicCenter?faces-redirect=true" />
+			<p:commandButton value="Cancelar"
+				action="listMedicCenter?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition> </html>
